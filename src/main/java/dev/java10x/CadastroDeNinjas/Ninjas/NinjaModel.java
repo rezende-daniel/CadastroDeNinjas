@@ -30,6 +30,10 @@ public class NinjaModel {
     @Column(name = "idade")
     private int idade;
 
+    @Column(name = "IMG_URL")
+    private String imgUrl;
+
+
 
     // um ninja tem uma unica missao
     @ManyToOne
