@@ -33,6 +33,9 @@ public class NinjaModel {
     @Column(name = "IMG_URL")
     private String imgUrl;
 
+    @Column(name = "rank")
+    private String rank;
+
 
 
     // um ninja tem uma unica missao
