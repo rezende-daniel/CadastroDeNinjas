@@ -23,13 +23,13 @@ public class NinjaController {
 
     //Add ninja
     @PostMapping("/criar")
-    public NinjaModel criarNinja(@RequestBody NinjaModel ninja) {
+    public NinjaDTO criarNinja(@RequestBody NinjaDTO ninja) {
         return ninjaService.criarNinja(ninja);
     }
 
     //Procurar ninja por id
     @GetMapping("/listarID/{id}")
-    public NinjaModel listarNinjasPorId(@PathVariable Long id) {
+    public NinjaModel listarNinjasPorId(@PathVariable long id) {
         return ninjaService.listarNinjasPorId(id);
     }
 
@@ -41,7 +41,7 @@ public class NinjaController {
 
     //Deletar um ninja
     @DeleteMapping("/deletarID/{id}")
-    public void deletarNinjaPorId(@PathVariable Long id) {
+    public void deletarNinjaPorId(@PathVariable long id) {
         ninjaService.deletarNinjaPorId(id);
     }
 
