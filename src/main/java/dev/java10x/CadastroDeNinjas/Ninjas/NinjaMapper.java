@@ -27,6 +27,6 @@ public class NinjaMapper {
         ninjaDTO.setEmail(ninjaModel.getEmail());
         return ninjaDTO;
 
-    }*/
+    }
 
 }
