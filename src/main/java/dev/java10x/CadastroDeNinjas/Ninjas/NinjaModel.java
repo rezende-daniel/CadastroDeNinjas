@@ -2,10 +2,7 @@ package dev.java10x.CadastroDeNinjas.Ninjas;
 
 import dev.java10x.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 //Transforma uma classe em uma entidade do BD
@@ -14,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@ToString(exclude = "missoes")
 public class NinjaModel {
 
     @Id
