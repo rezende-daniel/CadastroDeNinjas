@@ -1,12 +1,20 @@
 package dev.java10x.CadastroDeNinjas.Missoes;
 
 
+import dev.java10x.CadastroDeNinjas.Ninjas.NinjaRepository;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("missoes")
 public class MissoesController {
 
+    private final MissoesRepository  missoesRepository;
+    private final MissoesService missoesService;
+
+    public MissoesController(MissoesRepository missoesRepository, MissoesService missoesService) {
+        this.missoesRepository = missoesRepository;
+        this.missoesService = missoesService;
+    }
 
     //Add missao
     @PostMapping("/criaMissao")

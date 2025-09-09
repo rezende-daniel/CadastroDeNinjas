@@ -6,13 +6,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MissoesMapper {
-    public MissoesModel map(MissoesDTO missoesDTO) {
+
+
+    public MissoesModel mapMissoes(MissoesDTO missoesDTO) {
         MissoesModel missoesModel = new MissoesModel();
         missoesModel.setId(missoesDTO.getId());
         missoesModel.setNome(missoesDTO.getNome());
         return missoesModel;
     }
-    public MissoesDTO map(MissoesModel missoesModel) {
+    public MissoesDTO mapMissoes(MissoesModel missoesModel) {
         MissoesDTO missoesDTO = new MissoesDTO();
         missoesDTO.setId(missoesModel.getId());
         missoesDTO.setNome(missoesModel.getNome());
