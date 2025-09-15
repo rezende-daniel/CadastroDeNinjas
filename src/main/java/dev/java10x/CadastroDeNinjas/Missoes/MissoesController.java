@@ -7,10 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("missoes")
+@RequestMapping("/missoes")
 public class MissoesController {
 
     private final MissoesRepository  missoesRepository;
@@ -25,10 +26,11 @@ public class MissoesController {
 
     //Add missao
     @PostMapping("/criaMissao")
-    public ResponseEntity<String> criaMissao(@RequestBody MissoesDTO missoesDTO) {
-
-        MissoesDTO novaMissao =missoesService.criarMissao(missoesDTO);
-        return  ResponseEntity.status(HttpStatus.CREATED).body("Nova missao criada");
+    public ResponseEntity<String> criaMissao(@RequestBody MissoesDTO missoes) {
+        System.out.println("criaMissao");
+        MissoesDTO novaMissao =missoesService.criarMissao(missoes);
+        return  ResponseEntity.status(HttpStatus.CREATED)
+                .body("Nova missao criada com sucesso:"+novaMissao.getNome()+"!");
     }
 
 

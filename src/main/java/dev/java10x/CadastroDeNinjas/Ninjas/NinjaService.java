@@ -1,6 +1,8 @@
 package dev.java10x.CadastroDeNinjas.Ninjas;
 
 
+import dev.java10x.CadastroDeNinjas.Missoes.MissoesDTO;
+import dev.java10x.CadastroDeNinjas.Missoes.MissoesModel;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -41,6 +43,8 @@ public class NinjaService {
     }
 
 
+
+
     //Deletar um ninja - Tem que ser um metodo void
     public void deletarNinjaPorId(Long id){
         ninjaRepository.deleteById(id);
@@ -55,4 +59,5 @@ public class NinjaService {
             return ninjaMapper.map(ninjaSalvo);
         } return null;
     }
+
 }

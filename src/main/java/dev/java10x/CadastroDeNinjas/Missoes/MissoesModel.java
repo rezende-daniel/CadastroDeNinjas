@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+
 
 import java.util.List;
 
@@ -16,14 +16,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@ToString
 public class MissoesModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private long id;
+
+    @Column(name = "nome")
     private String nome;
-    private String dificuladde;
+
+    @Column(name = "dificuldade")
+    private String dificuldade;
 
     //uma missao pode ter varios ninjas
     @OneToMany(mappedBy = "missoes")

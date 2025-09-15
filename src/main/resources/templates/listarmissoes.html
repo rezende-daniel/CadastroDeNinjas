@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Missões</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .btn-back, .btn-add {
+            position: absolute;
+            top: 20px;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #fff;
+            transition: background 0.2s ease;
+        }
+
+        .btn-back {
+            left: 20px;
+            background-color: #3498db;
+        }
+
+        .btn-add {
+            right: 20px;
+            background-color: #2ecc71;
+        }
+
+        .btn-back:hover, .btn-add:hover {
+            filter: brightness(1.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(90deg, #4e54c8, #8f94fb);
+            color: #fff;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        tbody tr:hover {
+            background-color: #e8f0fe;
+        }
+
+        .ninja-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .ninja-list li {
+            margin-bottom: 6px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .actions a {
+            padding: 6px 12px;
+            font-size: 13px;
+            border-radius: 4px;
+            color: #fff;
+            text-decoration: none;
+            transition: transform 0.1s ease;
+        }
+
+        .actions a:nth-of-type(1) {
+            background-color: #f39c12;
+        }
+
+        .actions a:nth-of-type(2) {
+            background-color: #e74c3c;
+        }
+
+        .actions a:hover {
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            th, td {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .actions a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a th:href="@{/ninjas/ui/listarninjas}" class="btn-back">← Voltar</a>
+<a th:href="@{/missoes/ui/paginacrianovamissao}" class="btn-add">+ Adicionar Missão</a>
+
+<h1>Lista de Missões</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Dificuldade</th>
+        <th>Ninjas</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="missao : ${missoes}">
+        <td th:text="${missao.nome}"></td>
+        <td th:text="${missao.dificuldade}"></td>
+        <td>
+            <ul class="ninja-list">
+                <li th:each="ninja : ${missao.ninjas}" th:text="${ninja.nome}"></li>
+                <li th:if="${#lists.isEmpty(missao.ninjas)}">Nenhum ninja atribuído</li>
+            </ul>
+        </td>
+        <td class="actions">
+            <a th:href="@{/missoes/ui/alterarMissao/{id}(id=${missao.id})}">Alterar</a>
+            <a th:href="@{/missoes/ui/deletaMissao/{id}(id=${missao.id})}">Deletar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

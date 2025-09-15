@@ -12,12 +12,16 @@ public class MissoesMapper {
         MissoesModel missoesModel = new MissoesModel();
         missoesModel.setId(missoesDTO.getId());
         missoesModel.setNome(missoesDTO.getNome());
+        missoesModel.setDificuldade(missoesDTO.getDificuldade());
+        missoesModel.setNinjas(missoesDTO.getNinjas());
         return missoesModel;
     }
     public MissoesDTO mapMissoes(MissoesModel missoesModel) {
         MissoesDTO missoesDTO = new MissoesDTO();
         missoesDTO.setId(missoesModel.getId());
         missoesDTO.setNome(missoesModel.getNome());
+        missoesDTO.setDificuldade(missoesModel.getDificuldade());
+        missoesDTO.setNinjas(missoesModel.getNinjas());
         return missoesDTO;
     }
 }

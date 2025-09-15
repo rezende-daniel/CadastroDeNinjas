@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Ninja</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .btn-back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.2s ease;
+        }
+
+        .btn-back:hover {
+            filter: brightness(1.1);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #4e54c8;
+            box-shadow: 0 0 0 2px rgba(78, 84, 200, 0.2);
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background-color: #f39c12;
+            color: #fff;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+
+<a th:href="@{/ninjas/ui/listarninjas}" class="btn-back">← Voltar</a>
+
+<h1>Editar Ninja</h1>
+
+<form th:action="@{/ninjas/ui/alterarNinja/{id}(id=${ninja.id})}" th:object="${ninja}" method="post" class="form-container">
+    <input type="hidden" th:field="${ninja.id}">
+
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" th:field="${ninja.nome}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="idade">Idade</label>
+        <input type="number" id="idade" th:field="${ninja.idade}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" th:field="${ninja.email}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="rank">Rank</label>
+        <select id="rank" th:field="${ninja.rank}" required>
+            <option value="">Selecione</option>
+            <option value="Genin">Genin</option>
+            <option value="Chunin">Chunin</option>
+            <option value="Jounin">Jounin</option>
+            <option value="Anbu">Anbu</option>
+            <option value="Rokage">Rokage</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="missao">Missão atribuída</label>
+        <select id="missao" th:field="${ninja.missoes}">
+            <option value="">Sem missão</option>
+            <option th:each="m : ${missoes}"
+                    th:value="${m.id}"
+                    th:text="${m.nome}"
+                    th:selected="${ninja.missoes != null} ? ${ninja.missoes.id == m.id} : false">
+            </option>
+        </select>
+    </div>
+
+
+    <button type="submit" class="btn-submit">Salvar Alterações</button>
+</form>
+
+</body>
+</html>
+
+</body>
+</html>
